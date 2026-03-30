@@ -63,8 +63,9 @@ trait BelongsToTenant
      */
     public function scopeForTenant(Builder $query, $tenantId): Builder
     {
-        return $query->where($query->getModel()->getTable() . '.tenant_id', $tenantId);
-
+        // بنستخدم الفانكشن qualifyColumn عشان لارايفل يضيف اسم الجدول أوتوماتيك
+        // فتبقي ingredients.tenant_id بدلاً من tenant_id بس
+        return $query->where($query->qualifyColumn('tenant_id'), $tenantId);
     }
 
     /**
