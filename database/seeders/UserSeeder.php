@@ -78,7 +78,6 @@ class UserSeeder extends Seeder
         Project::create([
             'name' => 'Project 1',
             'description' => 'Project 1 Description',
-            'user_id' => 1,
             'tenant_id' => 1,
         ]);
 
