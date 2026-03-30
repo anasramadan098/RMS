@@ -10,24 +10,22 @@ trait BelongsToTenant
     /**
      * Boot the trait.
      */
-    public static function bootBelongsToTenant(): void
+public static function bootBelongsToTenant(): void
     {
-        // Automatically scope queries to the current tenant (only for SELECT queries)
         static::addGlobalScope('tenant', function (Builder $query) {
-            // Avoid infinite loop by checking if auth is resolving
             if (!app()->resolved('auth')) {
                 return;
             }
             
-            // Use session directly instead of auth() helper to avoid infinite loop
             if (session()->has('tenant_id')) {
-                $query->where('tenant_id', session('tenant_id'));
+                // التعديل هنا: استخدمنا qualifyColumn لضمان إضافة اسم الجدول أوتوماتيكياً
+                // هيتحول من: WHERE tenant_id = 1 
+                // إلى: WHERE ingredients.tenant_id = 1
+                $query->where($query->qualifyColumn('tenant_id'), session('tenant_id'));
             }
         });
 
-        // Automatically set tenant_id when creating new models
         static::creating(function ($model) {
-            // Use session directly instead of auth() helper to avoid infinite loop
             if (session()->has('tenant_id')) {
                 $model->tenant_id = session('tenant_id');
             }
