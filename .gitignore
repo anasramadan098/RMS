@@ -1,0 +1,133 @@
+# ========================
+# Laravel Default
+# ========================
+
+/vendor
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/storage/app/public
+/storage/framework/cache/data
+/storage/framework/sessions
+/storage/framework/views
+/storage/logs
+/storage/app/uploads
+/storage/app/private
+/storage/framework/cache/*
+
+# ========================
+# Environment Files
+# ========================
+
+.env
+.env.backup
+.env.production
+.env.testing
+
+# ========================
+# Composer
+# ========================
+
+composer.lock
+
+# ========================
+# NPM / Yarn
+# ========================
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ========================
+# Build Files
+# ========================
+
+/public/build
+/public/mix-manifest.json
+
+# ========================
+# IDE & Editor
+# ========================
+
+.idea
+.vscode
+*.swp
+*.swo
+*~
+*.bak
+
+# ========================
+# OS Files
+# ========================
+
+.DS_Store
+Thumbs.db
+
+# ========================
+# Testing
+# ========================
+
+/phpunit.xml
+.phpunit.result.cache
+
+# ========================
+# Logs
+# ========================
+
+*.log
+
+# ========================
+# Docker
+# ========================
+
+docker-compose.override.yml
+
+# ========================
+# Misc
+# ========================
+
+/.env.example.bak
+Homestead.json
+Homestead.yaml
+
+# ========================
+# Laravel Telescope
+# ========================
+
+/storage/telescope
+
+# ========================
+# Laravel Horizon
+# ========================
+
+/horizon.php
+
+# ========================
+# Cache & Temp
+# ========================
+
+/bootstrap/cache/*.php
+/bootstrap/cache/packages.php
+/bootstrap/cache/services.php
+
+# ========================
+# Public Uploads (Optional)
+# ========================
+
+/public/uploads
+
+# ========================
+# Backup Files
+# ========================
+
+*.sql
+*.sqlite
+
+# ========================
+# Keys
+# ========================
+
+*.pem
+*.key

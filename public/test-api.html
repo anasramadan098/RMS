@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار API Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        .result {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            white-space: pre-wrap;
+            font-family: monospace;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .success { border-left: 4px solid #28a745; }
+        .error { border-left: 4px solid #dc3545; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>اختبار API Menu</h1>
+        
+        <div class="test-section">
+            <h3>اختبار الفئات</h3>
+            <button class="btn" onclick="testCategories()">جلب الفئات</button>
+            <div id="categories-result" class="result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>اختبار الوجبات</h3>
+            <button class="btn" onclick="testMeals(1)">جلب وجبات الفئة 1</button>
+            <button class="btn" onclick="testMeals(2)">جلب وجبات الفئة 2</button>
+            <button class="btn" onclick="testMeals(3)">جلب وجبات الفئة 3</button>
+            <button class="btn" onclick="testMeals(4)">جلب وجبات الفئة 4</button>
+            <div id="meals-result" class="result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>اختبار شامل</h3>
+            <button class="btn" onclick="fullTest()">اختبار شامل</button>
+            <div id="full-result" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        async function testCategories() {
+            const resultDiv = document.getElementById('categories-result');
+            resultDiv.textContent = 'جاري الاختبار...';
+            resultDiv.className = 'result';
+            
+            try {
+                const response = await fetch('/api/menu/categories');
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.textContent = `✅ نجح الاختبار!\nعدد الفئات: ${data.length}\n\nالبيانات:\n${JSON.stringify(data, null, 2)}`;
+                    resultDiv.classList.add('success');
+                } else {
+                    resultDiv.textContent = `❌ فشل الاختبار!\nStatus: ${response.status}\nError: ${JSON.stringify(data, null, 2)}`;
+                    resultDiv.classList.add('error');
+                }
+            } catch (error) {
+                resultDiv.textContent = `❌ خطأ في الشبكة!\nError: ${error.message}`;
+                resultDiv.classList.add('error');
+            }
+        }
+
+        async function testMeals(categoryId) {
+            const resultDiv = document.getElementById('meals-result');
+            resultDiv.textContent = `جاري اختبار الفئة ${categoryId}...`;
+            resultDiv.className = 'result';
+            
+            try {
+                const response = await fetch(`/api/menu/meals/${categoryId}`);
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.textContent = `✅ نجح الاختبار للفئة ${categoryId}!\nعدد الوجبات: ${data.length}\n\nالبيانات:\n${JSON.stringify(data, null, 2)}`;
+                    resultDiv.classList.add('success');
+                } else {
+                    resultDiv.textContent = `❌ فشل الاختبار للفئة ${categoryId}!\nStatus: ${response.status}\nError: ${JSON.stringify(data, null, 2)}`;
+                    resultDiv.classList.add('error');
+                }
+            } catch (error) {
+                resultDiv.textContent = `❌ خطأ في الشبكة للفئة ${categoryId}!\nError: ${error.message}`;
+                resultDiv.classList.add('error');
+            }
+        }
+
+        async function fullTest() {
+            const resultDiv = document.getElementById('full-result');
+            resultDiv.textContent = 'جاري الاختبار الشامل...';
+            resultDiv.className = 'result';
+            
+            let results = [];
+            
+            try {
+                // اختبار الفئات
+                results.push('=== اختبار الفئات ===');
+                const categoriesResponse = await fetch('/api/menu/categories');
+                const categories = await categoriesResponse.json();
+                
+                if (categoriesResponse.ok) {
+                    results.push(`✅ الفئات: ${categories.length} فئة`);
+                    
+                    // اختبار الوجبات لكل فئة
+                    for (let category of categories) {
+                        results.push(`\n--- اختبار فئة: ${category.name} (ID: ${category.id}) ---`);
+                        
+                        const mealsResponse = await fetch(`/api/menu/meals/${category.id}`);
+                        const meals = await mealsResponse.json();
+                        
+                        if (mealsResponse.ok) {
+                            results.push(`✅ الوجبات: ${meals.length} وجبة`);
+                            meals.forEach(meal => {
+                                results.push(`  - ${meal.name}: ${meal.price} ريال`);
+                            });
+                        } else {
+                            results.push(`❌ فشل جلب الوجبات: ${JSON.stringify(meals)}`);
+                        }
+                    }
+                } else {
+                    results.push(`❌ فشل جلب الفئات: ${JSON.stringify(categories)}`);
+                }
+                
+                resultDiv.textContent = results.join('\n');
+                resultDiv.classList.add('success');
+                
+            } catch (error) {
+                results.push(`❌ خطأ عام: ${error.message}`);
+                resultDiv.textContent = results.join('\n');
+                resultDiv.classList.add('error');
+            }
+        }
+
+        // تشغيل اختبار تلقائي عند تحميل الصفحة
+        window.onload = function() {
+            setTimeout(testCategories, 1000);
+        };
+    </script>
+</body>
+</html>

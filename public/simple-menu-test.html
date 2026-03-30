@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار Menu بسيط</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .category { 
+            display: inline-block; 
+            margin: 10px; 
+            padding: 10px 20px; 
+            background: #007bff; 
+            color: white; 
+            cursor: pointer; 
+            border-radius: 5px;
+        }
+        .category:hover { background: #0056b3; }
+        .category.active { background: #28a745; }
+        .meal { 
+            border: 1px solid #ddd; 
+            margin: 10px 0; 
+            padding: 15px; 
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .meal-info { flex: 1; }
+        .meal-name { font-weight: bold; font-size: 1.1em; }
+        .meal-desc { color: #666; margin-top: 5px; }
+        .meal-price { font-weight: bold; color: #28a745; font-size: 1.2em; }
+        .loading { text-align: center; padding: 20px; }
+        .error { color: red; text-align: center; padding: 20px; }
+    </style>
+</head>
+<body>
+    <h1>اختبار Menu المطعم</h1>
+    
+    <div id="categories-container">
+        <div class="loading">جاري تحميل الفئات...</div>
+    </div>
+    
+    <div id="meals-container">
+        <div class="loading">اختر فئة لعرض الوجبات</div>
+    </div>
+
+    <script>
+        let categories = [];
+        
+        async function loadCategories() {
+            try {
+                console.log('Loading categories...');
+                const response = await fetch('/api/menu/categories');
+                console.log('Categories response status:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                categories = await response.json();
+                console.log('Categories loaded:', categories);
+                
+                renderCategories();
+            } catch (error) {
+                console.error('Error loading categories:', error);
+                document.getElementById('categories-container').innerHTML = 
+                    `<div class="error">خطأ في تحميل الفئات: ${error.message}</div>`;
+            }
+        }
+        
+        function renderCategories() {
+            const container = document.getElementById('categories-container');
+            
+            if (!categories || categories.length === 0) {
+                container.innerHTML = '<div class="error">لا توجد فئات متاحة</div>';
+                return;
+            }
+            
+            container.innerHTML = '<h3>الفئات:</h3>';
+            categories.forEach((category, index) => {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'category';
+                categoryDiv.textContent = category.name;
+                categoryDiv.onclick = () => selectCategory(category, index);
+                container.appendChild(categoryDiv);
+            });
+        }
+        
+        async function selectCategory(category, index) {
+            console.log('Category selected:', category);
+            
+            // تحديث الفئة النشطة
+            document.querySelectorAll('.category').forEach(cat => cat.classList.remove('active'));
+            document.querySelectorAll('.category')[index].classList.add('active');
+            
+            // تحميل الوجبات
+            const mealsContainer = document.getElementById('meals-container');
+            mealsContainer.innerHTML = '<div class="loading">جاري تحميل الوجبات...</div>';
+            
+            try {
+                console.log('Loading meals for category:', category.id);
+                const response = await fetch(`/api/menu/meals/${category.id}`);
+                console.log('Meals response status:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const meals = await response.json();
+                console.log('Meals loaded:', meals);
+                
+                renderMeals(meals, category.name);
+            } catch (error) {
+                console.error('Error loading meals:', error);
+                mealsContainer.innerHTML = 
+                    `<div class="error">خطأ في تحميل الوجبات: ${error.message}</div>`;
+            }
+        }
+        
+        function renderMeals(meals, categoryName) {
+            const container = document.getElementById('meals-container');
+            
+            if (!meals || meals.length === 0) {
+                container.innerHTML = `<div class="error">لا توجد وجبات في فئة "${categoryName}"</div>`;
+                return;
+            }
+            
+            container.innerHTML = `<h3>وجبات فئة "${categoryName}" (${meals.length} وجبة):</h3>`;
+            
+            meals.forEach(meal => {
+                const mealDiv = document.createElement('div');
+                mealDiv.className = 'meal';
+                mealDiv.innerHTML = `
+                    <div class="meal-info">
+                        <div class="meal-name">${meal.name}</div>
+                        ${meal.description ? `<div class="meal-desc">${meal.description}</div>` : ''}
+                    </div>
+                    <div class="meal-price">${meal.price} ريال</div>
+                `;
+                container.appendChild(mealDiv);
+            });
+        }
+        
+        // تحميل الفئات عند تحميل الصفحة
+        window.onload = loadCategories;
+    </script>
+</body>
+</html>

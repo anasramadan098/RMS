@@ -1,0 +1,37 @@
+<?php
+
+return [
+    'categories' => 'Categories',
+    'category_list' => 'Categories List',
+    'category_name_en' => 'Category Name (English)',
+    'category_name_ar' => 'Category Name (Arabic)',
+    'description_en' => 'Description (English)',
+    'description_ar' => 'Description (Arabic)',
+    'category_image' => 'Category Image',
+    'display_order' => 'Display Order',
+    'type' => 'Type',
+    'types' => [
+        'food' => 'Food',
+        'drink' => 'Drink',
+    ],
+    'status' => 'Status',
+    'active' => 'Active',
+    'inactive' => 'Inactive',
+    'add_category' => 'Add Category',
+    'create_category' => 'Create Category',
+    'create_new_category' => 'Create New Category',
+    'edit_category' => 'Edit Category',
+    'category_created' => 'Category created successfully',
+    'category_updated' => 'Category updated successfully',
+    'category_deleted' => 'Category deleted successfully',
+    'confirm_delete' => 'Are you sure you want to delete this category?',
+    'no_categories_found' => 'No categories found',
+    'table' => [
+        'name' => 'Name',
+        'description' => 'Description',
+        'type' => 'Type',
+        'products_count' => 'Products Count',
+        'created_at' => 'Created At',
+        'actions' => 'Actions',
+    ],
+];

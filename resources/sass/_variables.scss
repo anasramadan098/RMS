@@ -1,0 +1,9 @@
+/* Variables converted to CSS Custom Properties */
+:root {
+  --body-bg: #f8fafc;
+  --font-size-base: 0.9rem;
+  --line-height-base: 1.6;
+}
+
+/* Apply variables */
+body{background:var(--body-bg)!important}html{font-size:var(--font-size-base);line-height:var(--line-height-base)}

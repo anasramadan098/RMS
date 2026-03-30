@@ -1,0 +1,367 @@
+/* RTL Support CSS for Super Sales Dashboard */
+
+/* Base RTL Styles */
+[dir="rtl"] {
+    text-align: right;
+}
+
+[dir="rtl"] body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Arial Unicode MS';
+}
+
+/* Bootstrap RTL Overrides */
+[dir="rtl"] .text-start {
+    text-align: right !important;
+}
+
+[dir="rtl"] .float-start {
+    float: right !important;
+}
+
+[dir="rtl"] .float-end {
+    float: left !important;
+}
+
+/* Margin and Padding RTL */
+[dir="rtl"] .ms-1 { margin-right: 0.25rem !important; margin-left: 0 !important; }
+/* [dir="rtl"] .ms-2 { margin-right: 0.5rem !important; margin-left: 0 !important; } */
+[dir="rtl"] .ms-3 { margin-right: 1rem !important; margin-left: 0 !important; }
+[dir="rtl"] .ms-4 { margin-right: 1.5rem !important; margin-left: 0 !important; }
+[dir="rtl"] .ms-5 { margin-right: 3rem !important; margin-left: 0 !important; }
+
+[dir="rtl"] .me-1 { margin-left: 0.25rem !important; margin-right: 0 !important; }
+[dir="rtl"] .me-2 { margin-left: 0.5rem !important; margin-right: 0 !important; }
+[dir="rtl"] .me-3 { margin-left: 1rem !important; margin-right: 0 !important; }
+[dir="rtl"] .me-4 { margin-left: 1.5rem !important; margin-right: 0 !important; }
+[dir="rtl"] .me-5 { margin-left: 3rem !important; margin-right: 0 !important; }
+
+[dir="rtl"] .ps-1 { padding-right: 0.25rem !important; padding-left: 0 !important; }
+[dir="rtl"] .ps-2 { padding-right: 0.5rem !important; padding-left: 0 !important; }
+[dir="rtl"] .ps-3 { padding-right: 1rem !important; padding-left: 0 !important; }
+[dir="rtl"] .ps-4 { padding-right: 1.5rem !important; padding-left: 0 !important; }
+[dir="rtl"] .ps-5 { padding-right: 3rem !important; padding-left: 0 !important; }
+
+[dir="rtl"] .pe-1 { padding-left: 0.25rem !important; padding-right: 0 !important; }
+[dir="rtl"] .pe-2 { padding-left: 0.5rem !important; padding-right: 0 !important; }
+[dir="rtl"] .pe-3 { padding-left: 1rem !important; padding-right: 0 !important; }
+[dir="rtl"] .pe-4 { padding-left: 1.5rem !important; padding-right: 0 !important; }
+[dir="rtl"] .pe-5 { padding-left: 3rem !important; padding-right: 0 !important; }
+.mailChecoBox { position: absolute;right: 0;top: 20%;}
+[dir="rtl"] .mailChecoBox { left: 5%; right: auto;}
+@media (min-width: 1200px) {
+    [dir="rtl"] .sidenav.fixed-start~.main-content {
+        margin-left: 1.125rem;
+    }
+}
+/* Sidebar RTL */
+[dir="rtl"] .sidenav {
+    right: 0;
+    left: auto;
+}
+
+[dir="rtl"] .main-content {
+    margin-right: 17.125rem;
+    margin-left: 0;
+}
+
+[dir="rtl"] .sidenav .nav-link {
+    padding-right: 1rem;
+    padding-left: 0.5rem;
+    gap: 10px;
+    margin : 0;
+}
+
+[dir="rtl"] .sidenav .nav-link i {
+    margin-left: 0rem;
+    margin-right: 0;
+}
+
+/* Navigation RTL */
+[dir="rtl"] .navbar-nav {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .navbar-nav .nav-link {
+    padding-right: 0;
+    padding-left: 1rem;
+}
+
+[dir="rtl"] .dropdown-menu {
+    right: 0;
+    left: auto;
+}
+
+[dir="rtl"] .dropdown-menu-end {
+    right: auto !important;
+    left: 0 !important;
+}
+
+/* Cards RTL */
+[dir="rtl"] .card-header {
+    text-align: right;
+}
+
+[dir="rtl"] .card-body {
+    text-align: right;
+}
+
+[dir="rtl"] .card-title {
+    text-align: right;
+}
+
+/* Tables RTL */
+[dir="rtl"] .table {
+    text-align: right;
+}
+
+[dir="rtl"] .table th,
+[dir="rtl"] .table td {
+    text-align: right;
+}
+
+[dir="rtl"] .table th:first-child,
+[dir="rtl"] .table td:first-child {
+    border-right: 0;
+    padding-right: 15px !important;
+}
+
+[dir="rtl"] .table th:last-child,
+[dir="rtl"] .table td:last-child {
+    border-left: 0;
+}
+
+/* Forms RTL */
+[dir="rtl"] .form-label {
+    text-align: right;
+}
+
+[dir="rtl"] .form-control {
+    text-align: right;
+}
+
+[dir="rtl"] .form-select {
+    background-position: left 0.75rem center;
+    padding-left: 2.25rem;
+    padding-right: 0.75rem;
+}
+
+[dir="rtl"] .input-group-text {
+    border-left: 1px solid #ced4da;
+    border-right: 0;
+}
+
+[dir="rtl"] .input-group > .form-control:not(:last-child),
+[dir="rtl"] .input-group > .form-select:not(:last-child) {
+    border-top-left-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+[dir="rtl"] .input-group > .form-control:not(:first-child),
+[dir="rtl"] .input-group > .form-select:not(:first-child) {
+    border-top-right-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/* Buttons RTL */
+[dir="rtl"] .btn-group > .btn:not(:last-child):not(.dropdown-toggle) {
+    border-top-left-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+[dir="rtl"] .btn-group > .btn:not(:first-child) {
+    border-top-right-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/* Pagination RTL */
+[dir="rtl"] .pagination {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .page-link {
+    margin-right: -1px;
+    margin-left: 0;
+}
+
+[dir="rtl"] .page-item:first-child .page-link {
+    border-top-right-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+[dir="rtl"] .page-item:last-child .page-link {
+    border-top-left-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Breadcrumb RTL */
+[dir="rtl"] .breadcrumb-item + .breadcrumb-item::before {
+    content: "\\";
+    transform: scaleX(-1);
+}
+
+/* Modal RTL */
+[dir="rtl"] .modal-header .btn-close {
+    margin: -0.5rem 0 -0.5rem auto;
+}
+
+/* Alerts RTL */
+[dir="rtl"] .alert-dismissible .btn-close {
+    left: 0;
+    right: auto;
+}
+
+/* Icons RTL */
+[dir="rtl"] .fa-chevron-left::before {
+    content: "\f054";
+}
+
+[dir="rtl"] .fa-chevron-right::before {
+    content: "\f053";
+}
+
+[dir="rtl"] .fa-angle-left::before {
+    content: "\f105";
+}
+
+[dir="rtl"] .fa-angle-right::before {
+    content: "\f104";
+}
+
+/* Custom Dashboard Elements RTL */
+[dir="rtl"] .fixed-plugin {
+    right: auto;
+    left: 30px;
+}
+
+[dir="rtl"] .fixed-plugin .card {
+    transform: translateX(-100%);
+}
+
+[dir="rtl"] .fixed-plugin.show .card {
+    transform: translateX(0);
+}
+
+/* Statistics Cards RTL */
+[dir="rtl"] .card .icon {
+    right: auto;
+    left: 1rem;
+}
+
+/* Language Switcher RTL */
+[dir="rtl"] .language-switcher .dropdown-menu {
+    right: auto;
+    left: 0;
+}
+
+[dir="rtl"] .language-switcher .flag {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+/* Search RTL */
+[dir="rtl"] .search-input {
+    padding-left: 2.5rem;
+    padding-right: 1rem;
+}
+
+[dir="rtl"] .search-icon {
+    right: auto;
+    left: 0.75rem;
+}
+
+/* Responsive RTL */
+@media (max-width: 1199.98px) {
+    [dir="rtl"] .sidenav {
+        transform: translateX(100%);
+    }
+
+    [dir="rtl"] .sidenav.show {
+        transform: translateX(0);
+    }
+
+    [dir="rtl"] .main-content {
+        margin-right: 0;
+    }
+}
+
+/* Arabic Font Improvements */
+[dir="rtl"] {
+    font-family: 'Segoe UI', 'Tahoma', 'Arial Unicode MS', sans-serif;
+    line-height: 1.6;
+}
+
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3,
+[dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
+    font-weight: 600;
+}
+
+[dir="rtl"] .btn {
+    font-weight: 500;
+}
+
+[dir="rtl"] .filter-toggle-container {
+    right: auto;
+    left: 20px;
+} 
+
+[dir="rtl"] .filter-sidebar {
+    right: auto;
+    left: -400px;
+    &.active {
+        left: 0;
+        right: auto;
+    }
+}
+
+/* Meal Selection Styles */
+.meal-card {
+    border: 2px solid transparent;
+}
+
+.meal-card.selected {
+    border: 2px solid #007bff !important;
+    background-color: #f8f9fa;
+}
+
+.size-btn {
+    margin: 0 2px;
+    min-width: 80px;
+}
+
+.size-btn.selected {
+    box-shadow: 0 2px 8px rgba(0,123,255,0.3);
+}
+
+.size-box {
+    flex: 1;
+}
+
+.d-flex.gap-2 {
+    gap: 0.5rem !important;
+}
+
+/* Alert Styles */
+.alert-home {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    min-width: 300px;
+}
+
+[dir="rtl"] .alert-home {
+    right: auto;
+    left: 20px;
+}

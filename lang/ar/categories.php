@@ -1,0 +1,37 @@
+<?php
+
+return [
+    'categories' => 'الفئات',
+    'category_list' => 'قائمة الفئات',
+    'category_name_en' => 'اسم الفئة (إنجليزي)',
+    'category_name_ar' => 'اسم الفئة (عربي)',
+    'description_en' => 'الوصف (إنجليزي)',
+    'description_ar' => 'الوصف (عربي)',
+    'category_image' => 'صورة الفئة',
+    'display_order' => 'ترتيب العرض',
+    'type' => 'النوع',
+    'types' => [
+        'food' => 'طعام',
+        'drink' => 'مشروبات',
+    ],
+    'status' => 'الحالة',
+    'active' => 'نشط',
+    'inactive' => 'غير نشط',
+    'add_category' => 'إضافة فئة',
+    'create_category' => 'إنشاء فئة',
+    'create_new_category' => 'إنشاء فئة جديدة',
+    'edit_category' => 'تعديل فئة',
+    'category_created' => 'تم إنشاء الفئة بنجاح',
+    'category_updated' => 'تم تحديث الفئة بنجاح',
+    'category_deleted' => 'تم حذف الفئة بنجاح',
+    'confirm_delete' => 'هل أنت متأكد من حذف هذه الفئة؟',
+    'no_categories_found' => 'لا توجد فئات',
+    'table' => [
+        'name' => 'الاسم',
+        'description' => 'الوصف',
+        'type' => 'النوع',
+        'products_count' => 'عدد المنتجات',
+        'created_at' => 'تاريخ الإنشاء',
+        'actions' => 'الإجراءات',
+    ],
+];

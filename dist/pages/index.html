@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>
+            ERP System
+        </title>
+
+    <!--     Fonts and icons     -->
+    <link href="../assets/css/fonts.min.css" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="../assets/css/icons.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../assets/css/fa_all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- CSS Files -->
+    <link id="pagestyle" href="../assets/css/main.css" rel="stylesheet" />
+    <!-- RTL Support CSS -->
+    <link href="../assets/css/rtl-support.min.css" rel="stylesheet" />
+
+    <link rel="icon" type="image/x-icon" href="../assets/img/dash.ico">
+
+    </head>
+    <body>
+
+    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
+        <div class="sidenav-header">
+        <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+        <a class="navbar-brand m-0" href="/">
+            <span class="ms-1 font-weight-bold">ERP System</span>
+        </a>
+        </div>
+        <hr class="horizontal dark mt-0">
+        <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+        <ul class="navbar-nav">
+            
+            <!-- DashBoard -->
+            <li class="nav-item">
+                <a class="nav-link" href="./dashboard.html">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-store text-dark text-gradient text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./users.html">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-user-tie text-dark text-gradient text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Users</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./hr-system.html">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-people-roof text-dark text-gradient text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">HR System</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/tasks">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-list-check text-dark text-gradient text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Tasks</span>
+                </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link  " href="/costs">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-money-bill text-dark text-gradient text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Costs</span>
+            </a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link  " href="/cashier">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-truck-field text-dark text-gradient text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Cashier</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link  " href="/supply">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-truck-field text-dark text-gradient text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Suppliers</span>
+                </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/category">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-list text-dark text-gradient text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Category</span>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/ingredients">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-utensils text-dark text-gradient text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Ingredients</span>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/meals">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-bowl-rice text-dark text-gradient text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Meals</span>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/clients">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-users-line text-dark text-gradient text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Clients</span>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/bookings">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-calendar-check text-dark text-gradient text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Bookings</span>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link  " href="/orders">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-cart-plus text-dark text-gradient text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Sales</span>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link  " href="/kitchen">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-kitchen-set text-dark text-gradient text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Kitchen</span>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/cashier">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-cash-register text-dark text-gradient text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Cashier</span>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/ad">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="fa-brands fa-adversal text-dark text-gradient text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Ads</span>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/popular">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="fa-regular fa-face-grin-beam text-dark text-gradient text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Popular</span>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/feedbacks">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-comments text-dark text-gradient text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Feedbacks</span>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="/automatic-msgs" class="nav-link">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-envelope text-dark text-gradient text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Auto Messages</span>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="/whatsapp-settings" class="nav-link">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="fab fa-whatsapp text-success text-gradient text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">WhatsApp</span>
+            </a>
+            </li>
+            
+            <!-- Drop Down Menu -->
+            <li class="nav-item">
+            <a data-bs-toggle="collapse" href="#navbar-forms" class="nav-link  " aria-controls="navbar-forms" role="button" aria-expanded="false">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-robot text-dark text-gradient text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">AI Analysis</span>
+            </a>
+            <div class="collapse" id="navbar-forms">
+                <ul class="nav ms-4 ps-3">
+                <li class="nav-item">
+                    <a class="nav-link  " href="/ai/ai-projects">
+                    <span class="sidenav-normal"> Projects </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  " href="/ai/ai-products">
+                    <span class="sidenav-normal"> Products </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  " href="/ai/ai-sales">
+                    <span class="sidenav-normal"> Sales </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  " href="/ai/ai-costs">
+                    <span class="sidenav-normal"> Costs </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  " href="/ai/ai-clients">
+                    <span class="sidenav-normal"> Clients </span>
+                    </a>
+                </li>
+                </ul>
+            </div>
+            </li>
+            <li class="nav-item mt-3">
+            <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account Pages</h6>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link  " href="/projects">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-gears text-dark text-gradient text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Profile</span>
+                </a>
+            </li>
+            
+        </ul>
+        </div>
+        <div class="sidenav-footer mx-3 ">
+        <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
+            <div class="full-background" style="background-image: url('../assets/img/curved-images/white-curved.jpg')"></div>
+            <div class="card-body text-start p-3 w-100">
+            <div class="icon icon-shape icon-sm bg-white shadow text-center mb-3 d-flex align-items-center justify-content-center border-radius-md">
+                <i class="fa-solid fa-diamond-turn-right text-dark text-gradient text-lg top-0"></i>
+            </div>
+            <h5 class="text-dark up mb-0">Super Sales</h5>
+            <p class="text-xs text-dark mb-0 font-weight-bold">Best way to manage sales</p>
+            </div>
+        </div>
+        <a class="btn btn-primary mt-3 w-100" href="https://api.whatsapp.com/send?phone=201100335498">Contact Us</a>
+        </div>
+    </aside>
+        
+
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+    <div class="container-fluid py-1 px-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/">Pages</a></li>
+          <li class="breadcrumb-item text-sm text-dark active page-name-e" aria-current="page">Dashboard</li>
+        </ol>
+        <h6 class="font-weight-bolder mb-0 page-name-e">Dashboard</h6>
+      </nav>
+      <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+        <div class="ms-md-auto pe-md-3 d-flex align-items-center min-width-30 search-container">
+          <!-- Search component will be placed here -->
+        </div>
+        <ul class="navbar-nav justify-content-end">
+          <li class="nav-item d-flex align-items-center">
+            <!-- Language switcher component will be placed here -->
+          </li>
+          <li class="nav-item d-flex align-items-center ms-3">
+            <a href="/logout" class="nav-link text-body font-weight-bold px-0">
+              <i class="fa fa-user me-sm-1"></i>
+              <span class="d-sm-inline d-none">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+        </nav>
+
+
+    </main>
+
+
+
+
+    <div class="fixed-plugin">
+        <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+        <i class="fa fa-cog py-2"> </i>
+        </a>
+        <div class="card shadow-lg ">
+        <div class="card-header pb-0 pt-3 ">
+            <div class="float-start">
+            <h5 class="mt-3 mb-0">Sales Management System Configuration</h5>
+            <p>Dashboard Options</p>
+            </div>
+            <div class="float-end mt-4">
+            <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+                <i class="fa fa-close"></i>
+            </button>
+            </div>
+            <!-- End Toggle Button -->
+        </div>
+        <hr class="horizontal dark my-1">
+        <div class="card-body pt-sm-3 pt-0">
+            <!-- Sidebar Backgrounds -->
+            <div>
+            <h6 class="mb-0">Navigation Colors</h6>
+            </div>
+            <a href="javascript:void(0)" class="switch-trigger background-color">
+            <div class="badge-colors my-2 text-start">
+                <span class="badge filter bg-primary active" data-color="primary" onclick="sidebarColor(this)"></span>
+                <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
+                <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
+                <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
+                <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
+                <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
+            </div>
+            </a>
+            <!-- Sidenav Type -->
+            <div class="mt-3">
+            <h6 class="mb-0">Navigation Style</h6>
+            <p class="text-sm">Choose between different sidebar styles.</p>
+            </div>
+            <div class="d-flex">
+            <button class="btn btn-primary w-100 px-3 mb-2 active" data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
+            <button class="btn btn-primary w-100 px-3 mb-2 ms-2" data-class="bg-white" onclick="sidebarType(this)">White</button>
+            </div>
+            <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav style in mobile view.</p>
+            <!-- Navbar Fixed -->
+            <div class="mt-3">
+            <h6 class="mb-0">Navbar Fixed</h6>
+            </div>
+            <div class="form-check form-switch ps-0">
+            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
+            </div>
+            <hr class="horizontal dark my-sm-4">
+            
+            </div>
+        </div>
+    </div>
+        
+    
+     
+
+    </body>
+
+
+
+    <!-- Scripts -->
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="../assets/js/mainPage.js"></script>
+    <script src="../assets/js/search.js"></script>
+
+    <!-- Chat script placeholder -->
+
+    <script>
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+        var options = {
+            damping: '0.5'
+        }
+        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
+    </script>
+
+    <!-- Github buttons -->
+    <script async defer src="../assets/js/buttons.js"></script>
+
+
+
+
+
+    <script>
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+        var options = {
+            damping: '0.5'
+        }
+        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
+    </script>
+
+
+    <!-- Github buttons -->
+    <script async defer src="../assets/js/buttons.js"></script>
+
+
+    <script src="../assets/js/soft-ui-dashboard.min.js"></script>
+
+</html>
