@@ -35,7 +35,7 @@ class AiController extends Controller
      */
     private function getSystemPrompt()
     {
-        $projectInfo = json_encode(Project::where('user_id', Auth::user()->id)->first());
+        $projectInfo = json_encode(Project::first());
         $prompt = "You are an expert business consultant and data analyst. Always analyze the provided data deeply, consider user and project context (Project Data: $projectInfo), The Currency Is The Project Country Currency You Must Get It.  deliver your advice in a clear, concise, and professional manner. My Project Info  Format your response as bullet points, using HTML <ul> and <li> tags, and make important keywords or phrases bold using <b> tags for Blade rendering. If your answer is long, continue until you provide at least 7 detailed bullet points.";
 
         $this->systemPrompt = $prompt;
@@ -65,18 +65,11 @@ class AiController extends Controller
 
 
 
-        $response = Prism::text()
-            ->using(Provider::Gemini, 'gemini-2.0-flash')
-            ->withSystemPrompt($this->getSystemPrompt())
-            ->withPrompt($userPrompt)
-            ->withProviderOptions(['searchGrounding' => true])
-            ->withMaxTokens(1500)
-            ->generate();
-
-
+        // Use OpenRouter
+        $response = $this->send_api($userPrompt , $this->getSystemPrompt() );
 
         return view('ai.suggestions', [
-            'response' => $response->text
+            'response' => $response->json()['choices'][0]['message']['content']
         ]);
     }
 
@@ -99,16 +92,11 @@ class AiController extends Controller
 
 
         try {
-            $response = Prism::text()
-            ->using(Provider::Gemini, 'gemini-2.0-flash')
-            ->withSystemPrompt($this->getSystemPrompt())
-            ->withPrompt($userPrompt)
-            ->withMaxTokens(1500)
-            ->generate()
-            ->text;
+            // Use OpenRouter
+            $response = $this->send_api($userPrompt , $this->getSystemPrompt() );
 
             return view('ai.suggestions', [
-                'response' => $response
+                'response' => $response->json()['choices'][0]['message']['content']
             ]);
 
         } catch (\Exception $e) {
@@ -123,16 +111,11 @@ class AiController extends Controller
         $userPrompt = "Analyze current Meal data, customer data, and project specifics ($Meals). Identify the precise target market. Provide actionable, professional recommendations for Meal improvement by pinpointing current, specific market trends and trending Meals directly relevant to this project's field. Deliver direct, data-driven insights on high-demand Meals and real-world market dynamics. Avoid generic advice; focus on specific, verifiable trends and concrete improvement strategies.";
 
         try {
-            $response = Prism::text()
-            ->using(Provider::Gemini, 'gemini-2.0-flash')
-            ->withSystemPrompt($this->getSystemPrompt())
-            ->withPrompt($userPrompt)
-            ->withMaxTokens(1500)
-            ->generate()
-            ->text;
+            // Use OpenRouter
+            $response = $this->send_api($userPrompt , $this->getSystemPrompt() );
 
             return view('ai.suggestions', [
-                'response' => $response
+                'response' => $response->json()['choices'][0]['message']['content']
             ]);
 
         } catch (\Exception $e) {
@@ -147,16 +130,11 @@ class AiController extends Controller
 
 
         try {
-            $response = Prism::text()
-            ->using(Provider::Gemini, 'gemini-2.0-flash')
-            ->withSystemPrompt($this->getSystemPrompt())
-            ->withPrompt($userPrompt)
-            ->withMaxTokens(1500)
-            ->generate()
-            ->text;
+            // Use OpenRouter
+            $response = $this->send_api($userPrompt , $this->getSystemPrompt() );
 
             return view('ai.suggestions', [
-                'response' => $response
+                'response' => $response->json()['choices'][0]['message']['content']
             ]);
 
         } catch (\Exception $e) {
@@ -179,16 +157,11 @@ class AiController extends Controller
         Avoid generic advice like 'negotiate with suppliers' or 'reduce waste.' Instead, provide specific, verifiable examples and actionable steps. For instance, rather than 'find cheaper software,' suggest 'Software X, currently costing Y, can be replaced by Software Z which offers similar features for [Specific Lower Price], potentially saving [Amount].' Or, 'The recurring subscription for Service A, costing B, was used only twice last quarter according to usage data; recommend termination to save B.' Focus entirely on data-driven, precise, and implementable cost-saving measures.";
 
         try {
-            $response = Prism::text()
-            ->using(Provider::Gemini, 'gemini-2.0-flash')
-            ->withSystemPrompt($this->getSystemPrompt())
-            ->withPrompt($userPrompt)
-            ->withMaxTokens(1500)
-            ->generate()
-            ->text;
+            // Use OpenRouter
+            $response = $this->send_api($userPrompt , $this->getSystemPrompt() );
 
             return view('ai.suggestions', [
-                'response' => $response
+                'response' => $response->json()['choices'][0]['message']['content']
             ]);
 
         } catch (\Exception $e) {
@@ -210,16 +183,11 @@ class AiController extends Controller
         Your output should be a clear, step-by-step guide offering tangible actions rather than abstract concepts. Assume the project is in an early to mid-stage of development unless the notes explicitly state otherwise. Focus on practical first steps for continuous improvement and expansion using the given information as the sole basis for your strategic advice.";
 
         try {
-            $response = Prism::text()
-            ->using(Provider::Gemini, 'gemini-2.0-flash')
-            ->withSystemPrompt($this->getSystemPrompt())
-            ->withPrompt($userPrompt)
-            ->withMaxTokens(1500)
-            ->generate()
-            ->text;
+            // Use OpenRouter
+            $response = $this->send_api($userPrompt , $this->getSystemPrompt() );
 
             return view('ai.suggestions', [
-                'response' => $response
+                'response' => $response->json()['choices'][0]['message']['content']
             ]);
 
         } catch (\Exception $e) {
@@ -264,16 +232,12 @@ class AiController extends Controller
 
         Format your response as an HTML <ul> list, using <b> tags for important keywords or phrases, so it can be rendered directly in a Blade template. Ensure your response contains at least 7 detailed bullet points with data-driven insights.";
         try {
-            $response = Prism::text()
-            ->using(Provider::Gemini, 'gemini-2.0-flash')
-            ->withSystemPrompt($this->getSystemPrompt())
-            ->withPrompt($userPrompt)
-            ->withMaxTokens(1500)
-            ->generate()
-            ->text;
+
+            // Use OpenRouter
+            $response = $this->send_api($userPrompt , $this->getSystemPrompt() );
 
             return view('ai.suggestions', [
-                'response' => $response
+                'response' => $response->json()['choices'][0]['message']['content']
             ]);
 
         } catch (\Exception $e) {
@@ -463,18 +427,7 @@ class AiController extends Controller
 
 
         // Use OpenRouter
-        $response = Http::withHeaders([
-        'Authorization' => 'Bearer '.env('OPENROUTER_API_KEY'),
-        ])->post('https://openrouter.ai/api/v1/chat/completions', [
-            'model' => 'z-ai/glm-4.5-air',
-            'messages' => [
-                [ 'role' => 'system' , 'content' => $system_prompt ],
-                [ 'role' => 'user' , 'content' => $prompt ],
-            ],
-            'stream' => false,
-            'max_tokens' => 1500,
-            'temperature' => 0.7,
-        ]);
+        $response = $this->send_api($prompt , $system_prompt);
 
         return $response->json()['choices'][0]['message']['content'];
         
@@ -551,18 +504,7 @@ the Output Must Be In $lang
 
 
         // Use OpenRouter
-        $response = Http::withHeaders([
-        'Authorization' => 'Bearer '.env('OPENROUTER_API_KEY'),
-        ])->post('https://openrouter.ai/api/v1/chat/completions', [
-            'model' => 'z-ai/glm-4.5-air',
-            'messages' => [
-                [ 'role' => 'system' , 'content' => $system_prompt ],
-                [ 'role' => 'user' , 'content' => $prompt ],
-            ],
-            'stream' => false,
-            'max_tokens' => 1500,
-            'temperature' => 0.7,
-        ]);
+        $response = $this->send_api($prompt , $system_prompt);
 
         return $response->json()['choices'][0]['message']['content'];
 
@@ -635,18 +577,7 @@ the Output Must Be In $lang
         ";
 
         // Use OpenRouter
-        $response = Http::withHeaders([
-        'Authorization' => 'Bearer '.env('OPENROUTER_API_KEY'),
-        ])->post('https://openrouter.ai/api/v1/chat/completions', [
-            'model' => 'z-ai/glm-4.5-air',
-            'messages' => [
-                [ 'role' => 'system' , 'content' => $system_prompt ],
-                [ 'role' => 'user' , 'content' => $prompt ],
-            ],
-            'stream' => false,
-            'max_tokens' => 1500,
-            'temperature' => 0.7,
-        ]);
+        $response = $this->send_api($prompt , $system_prompt);
 
         return $response->json()['choices'][0]['message']['content'];
 
@@ -728,6 +659,16 @@ the Output Must Be In $lang
         ";
 
 
+        // Use OpenRouter
+        $response = $this->send_api($prompt , $system_prompt);
+
+        return $response->json()['choices'][0]['message']['content'];
+
+    }
+
+
+    public function send_api($prompt ,  $system_prompt) 
+    {
          // Use OpenRouter
         $response = Http::withHeaders([
         'Authorization' => 'Bearer '.env('OPENROUTER_API_KEY'),
@@ -742,8 +683,7 @@ the Output Must Be In $lang
             'temperature' => 0.7,
         ]);
 
-        return $response->json()['choices'][0]['message']['content'];
-
+        return $response;
     }
 
 
