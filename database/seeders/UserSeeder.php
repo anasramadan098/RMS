@@ -80,6 +80,11 @@ class UserSeeder extends Seeder
             'description' => 'Project 1 Description',
             'tenant_id' => 1,
         ]);
+        Project::create([
+            'name' => 'Project 2',
+            'description' => 'Project 2 Description',
+            'tenant_id' => 2,
+        ]);
 
         
     }
