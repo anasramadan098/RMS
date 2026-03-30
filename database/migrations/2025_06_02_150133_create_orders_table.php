@@ -28,17 +28,17 @@ return new class extends Migration
             $table->text('notes')->nullable(); // ملاحظات الطلب
             $table->timestamp('prepared_at')->nullable(); // وقت تحضير الطلب
             $table->timestamp('delivered_at')->nullable(); // وقت تسليم الطلب
-            $table->timestamp('completed_at')->nullable()->after('status');
-            $table->foreignId('completed_by')->nullable()->constrained('users')->after('completed_at');
-            $table->foreignId('client_id')->nullable()->after('user_id')->constrained()->onDelete('set null');
+            $table->timestamp('completed_at')->nullable();
+            $table->foreignId('completed_by')->nullable()->constrained('users');
+            $table->foreignId('client_id')->nullable()->constrained()->onDelete('set null');
 
-            $table->string('table_number')->nullable()->after('order_type'); // رقم الطاولة
+            $table->string('table_number')->nullable(); // رقم الطاولة
             $table->enum('payment_method' , ['cash', 'credit_card', 'bank_transfer', 'wallet' , 'other'])->nullable()->default('cash'); // طريقة الدفع
 
             // Tenant relationship (for manual multi-tenancy)
             $table->foreignId('tenant_id')->nullable()->constrained('tenants')->onDelete('cascade');
 
-            // إضافة فهرس للأداء
+            // إضافة فهرس للأداءx
             $table->index(['client_id']);
             $table->index(['table_number']);
             $table->timestamps();

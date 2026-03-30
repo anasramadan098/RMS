@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             // Employee-specific fields (nullable for non-employee users)
             $table->string('phone')->nullable()->after('email');
-            $table->decimal('default_salary', 10, 2)->nullable()->after('phone');
-            $table->decimal('hourly_rate', 8, 2)->nullable()->after('default_salary');
-            $table->integer('working_hours_per_day')->nullable()->default(8)->after('hourly_rate');
-            $table->boolean('is_active')->default(true)->after('working_hours_per_day');
-            $table->text('notes')->nullable()->after('is_active');
+            $table->decimal('default_salary', 10, 2)->nullable();
+            $table->decimal('hourly_rate', 8, 2)->nullable();
+            $table->integer('working_hours_per_day')->nullable()->default(8);
+            $table->boolean('is_active')->default(true);
+            $table->text('notes')->nullable();
         });
     }
 

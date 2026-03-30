@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('min_stock_level')->default(0); // الحد الأدنى للمخزون
             $table->string('image')->nullable(); // صورة المكون
             $table->boolean('is_active')->default(true); // حالة المكون
-            $table->date('expiry_date')->nullable()->after('min_stock_level');
+            $table->date('expiry_date')->nullable();
             
             $table->foreignId('supplier_id')->constrained()->onDelete('cascade'); // Supplier
             // Tenant relationship (for manual multi-tenancy)

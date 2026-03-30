@@ -73,11 +73,10 @@ class Supply extends Model
         $user_id = Auth::id();
 
         // Get all supplies for the user
-        $all_results = static::where('user_id', $user_id)->get();
+        $all_results = static::all();
 
         // Get supplies within the specified date range
-        $target_results = static::where('user_id', $user_id)
-                               ->where('created_at', '>=', now()->subDays($date))
+        $target_results = static::where('created_at', '>=', now()->subDays($date))
                                ->get();
 
         // Calculate percentage

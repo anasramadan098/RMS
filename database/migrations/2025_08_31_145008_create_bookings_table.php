@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('guests');
             $table->longText('event');
             $table->date('datetime');
-            $table->text('status')->default('pending');
+            $table->text('status');
             $table->integer('client_id')->nullable();
             // Tenant relationship (for manual multi-tenancy)
             $table->foreignId('tenant_id')->nullable()->constrained('tenants')->onDelete('cascade');

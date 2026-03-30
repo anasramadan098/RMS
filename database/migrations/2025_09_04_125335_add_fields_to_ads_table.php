@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('path_en')->nullable();
             $table->time('start_time')->default('00:00:00');
             $table->time('end_time')->default('00:00:00');
-            $table->boolean('active')->default('true');
+            $table->boolean('active')->default(true);
         });
     }
 
