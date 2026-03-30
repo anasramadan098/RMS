@@ -64,13 +64,13 @@ class UserSeeder extends Seeder
         
 
         // Create default employee account
-        User::create([
-            'name' => 'John Employee',
-            'email' => 'employee@example.com',
-            'password' => Hash::make('password'),
-            'role' => UserRole::EMPLOYEE->value,
-            'email_verified_at' => now(),
-        ]);
+        // User::create([
+        //     'name' => 'John Employee',
+        //     'email' => 'employee@example.com',
+        //     'password' => Hash::make('password'),
+        //     'role' => UserRole::EMPLOYEE->value,
+        //     'email_verified_at' => now(),
+        // ]);
 
         // Create additional test users
         // User::factory(8)->create();
