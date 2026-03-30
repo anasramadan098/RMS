@@ -312,7 +312,7 @@ class AiController extends Controller
             $response = Http::withHeaders([
             'Authorization' => 'Bearer '.env('OPENROUTER_API_KEY'),
             ])->post('https://openrouter.ai/api/v1/chat/completions', [
-                'model' => 'z-ai/glm-4.5-air',
+                'model' => 'liquid/lfm-2.5-1.2b-instruct:free',
                 'messages' => [
                     [ 'role' => 'system' , 'content' => $system_prompt ],
                     
@@ -328,6 +328,7 @@ class AiController extends Controller
                 ],
                 'stream' => false,
                 'max_tokens' => 1500,
+                'include_reasoning' => false,
                 'temperature' => 0.7,
             ]);
 
