@@ -231,10 +231,13 @@ class AiController extends Controller
            - Suggest how to communicate this USP effectively across key touchpoints.
 
         Format your response as an HTML <ul> list, using <b> tags for important keywords or phrases, so it can be rendered directly in a Blade template. Ensure your response contains at least 7 detailed bullet points with data-driven insights.";
+        
+        
         try {
 
             // Use OpenRouter
             $response = $this->send_api($userPrompt , $this->getSystemPrompt() );
+
 
             return view('ai.suggestions', [
                 'response' => $response->json()['choices'][0]['message']['content']
@@ -673,11 +676,12 @@ the Output Must Be In $lang
         $response = Http::withHeaders([
         'Authorization' => 'Bearer '.env('OPENROUTER_API_KEY'),
         ])->post('https://openrouter.ai/api/v1/chat/completions', [
-            'model' => 'z-ai/glm-4.5-air',
+            'model' => 'liquid/lfm-2.5-1.2b-instruct:free',
             'messages' => [
                 [ 'role' => 'system' , 'content' => $system_prompt ],
                 [ 'role' => 'user' , 'content' => $prompt ],
             ],
+            'include_reasoning' => false,
             'stream' => false,
             'max_tokens' => 1500,
             'temperature' => 0.7,
