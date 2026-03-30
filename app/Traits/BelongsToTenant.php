@@ -64,6 +64,7 @@ trait BelongsToTenant
     public function scopeForTenant(Builder $query, $tenantId): Builder
     {
         return $query->where('tenant_id', $tenantId);
+        $query->where($query->getModel()->getTable() . '.tenant_id', $tenantId);
     }
 
     /**
