@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('notes')->nullable(); // ملاحظات إضافية
             $table->timestamps();
 
+            // Tenant relationship (for manual multi-tenancy)
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants')->onDelete('cascade');
             // فهرس مركب لمنع التكرار
             $table->unique(['meal_id', 'ingredient_id']);
         });

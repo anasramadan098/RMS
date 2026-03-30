@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-	  $table->json('meals')->default(new \Illuminate\Database\Query\Expression('(JSON_ARRAY())'));
+	        $table->json('meals')->default(new \Illuminate\Database\Query\Expression('(JSON_ARRAY())'));
           
         });
     }

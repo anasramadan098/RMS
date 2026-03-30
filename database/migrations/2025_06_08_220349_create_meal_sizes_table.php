@@ -21,7 +21,8 @@ return new class extends Migration
             $table->integer('sort_order')->default(0); // ترتيب العرض
             $table->text('description')->nullable(); // وصف الحجم
             $table->timestamps();
-
+            // Tenant relationship (for manual multi-tenancy)
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants')->onDelete('cascade');
             // فهرس لتحسين الأداء
             $table->index(['meal_id', 'is_active']);
         });

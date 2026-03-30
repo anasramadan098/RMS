@@ -19,6 +19,9 @@ return new class extends Migration
             $table->integer('quantity')->default(1); // كمية الإضافة
             $table->timestamps();
 
+            // Tenant relationship (for manual multi-tenancy)
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants')->onDelete('cascade');
+
             // فهرس فريد لمنع تكرار نفس الإضافة لنفس العنصر
             $table->unique(['order_item_id', 'meal_extra_id']);
         });

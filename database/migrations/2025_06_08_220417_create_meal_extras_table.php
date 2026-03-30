@@ -22,7 +22,8 @@ return new class extends Migration
             $table->text('description')->nullable(); // وصف الإضافة
             $table->string('category')->nullable(); // فئة الإضافة (جبن، خضار، لحوم، إلخ)
             $table->timestamps();
-
+            // Tenant relationship (for manual multi-tenancy)
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants')->onDelete('cascade');
             // فهرس لتحسين الأداء
             $table->index(['meal_id', 'is_active']);
         });

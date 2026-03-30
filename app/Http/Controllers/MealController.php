@@ -80,7 +80,7 @@ class MealController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('/productImages'), $filename);
+            $file->move(public_path('productImages'), $filename);
             $data['image'] = asset('productImages/' . $filename);
         }
 
