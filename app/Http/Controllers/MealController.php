@@ -80,7 +80,7 @@ class MealController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move(base_path('public_html/productImages'), $filename);
+            $file->move(public_path('/productImages'), $filename);
             $data['image'] = asset('productImages/' . $filename);
         }
 
@@ -199,13 +199,12 @@ class MealController extends Controller
         $data = $request->except('ingredients');
         if ($request->hasFile('image')) {
             // حذف الصورة القديمة إذا وجدت
-            if ($meal->image && file_exists(base_path('public_html/' . $meal->image))) {
-                unlink(base_path('public_html/' . $meal->image));
+            if ($meal->image && file_exists(public_path( $meal->image))) {
+                unlink(public_path( $meal->image));
             }
-
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move(base_path('public_html/productImages'), $filename);
+            $file->move(public_path('/productImages'), $filename);
             $data['image'] = asset('productImages/' . $filename);
         }
 
@@ -274,8 +273,8 @@ class MealController extends Controller
     {
         $meal->delete();
         // Remove Img
-        if ($meal->image && file_exists(base_path('public_html' . $meal->image))) {
-            unlink(base_path('public_html' . $meal->image));
+        if ($meal->image && file_exists(public_path( $meal->image))) {
+            unlink(public_path($meal->image));
         }
         return redirect()->route('meals.index')->with('msg', __('meals.meal_deleted'));
     }
